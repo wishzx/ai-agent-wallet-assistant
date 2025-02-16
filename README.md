@@ -24,11 +24,12 @@ Start 13:00
 - [x] Hyperbee transaction log (14:40)
 - [x] AI agent loop working 3hours (15:55)
 - [x] AI agent implements all tool calls / wallet functiuonn implementation:
-      [x] Create a new Eth wallet (17:19)
-      [x] Show the balance (17:30)
-      [x] Make a Eth payment from user wallet (assuming agent can store user private key for simplicity)
-      [x] List recent transactions of the wallet
-      //19:05 most of the code is done the agent loop and tool works but the implementation of the actual wallet functions is not great and took me 1:30 hours because i was not really familiar with the lib-wallet module and the documentation was incomplete, specifically I couldn't find a way to initialize a wallet from a private key which blocked me and made me simplify the functionalities
+      - [x] Create a new Eth wallet (17:19)
+      - [x] Show the balance (17:30)
+      - [x] Make an Eth payment from user wallet (assuming agent can store user private key for simplicity)
+      - [x] List recent transactions of the wallet
+
+      > Note: Most of the code is done. The agent loop and tool work, but the implementation of the actual wallet functions is not great and took me 1:30 hours because I was not really familiar with the lib-wallet module and the documentation was incomplete. Specifically, I couldn't find a way to initialize a wallet from a private key, which blocked me and made me simplify the functionalities.
 - [x] cleaning code (18:55)
 - [x] writing documentations (19:10-19:40)
 - [x] wrapping up and delivery (19:40)
@@ -41,19 +42,19 @@ To build and start the necessary Docker containers, use the following commands:
 Before running the Docker containers, make sure to copy the `.env.sample` file to `.env` and add the `OPENAI_KEY` specified below:
 
 ```sh
-docker compose build
-docker compose up web3 indexer
-docker compose up backend_node client_node
-```
-
-```sh
 cp .env.sample .env
 ```
 
-Then, add the following line to your `.env` file:
+Then, add the following line to your `.env` file (explained in the Note section)
 
 ```
 REMOVED
+```
+
+```sh
+docker compose build
+docker compose up web3 indexer
+docker compose up backend_node client_node
 ```
 
 ### Note
