@@ -70,10 +70,6 @@ REMOVED
 
 ## Messages Log
 
-````json
-# Ethereum Wallet Interaction Log
-
-## Messages Log
 ```json
 {
   "messages": [
@@ -152,8 +148,7 @@ REMOVED
     }
   ]
 }
-
-````
+```
 
 Woops! An error occurred during the execution of the `sendPayment` function:
 Since i initialized the wallet globally there is no way to catch that error inside the handler and I have no time left to fix this, for other time of errors the application send the error to the AI agent which will process it and send a nice message back
