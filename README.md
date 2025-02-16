@@ -1,7 +1,21 @@
 I had problems connecting to the suggested bitcoin testnet and indexer so I created a local eth blockchain and indexer using docker and following the instructions on https://docs.wallet.tether.io/blockchains/wallet-pay-eth-erc20
-I felt I had to and I hope you appreciate me spending some time focusing on demostrating solid software engineer practices, which took time away from the agent implementation, I wish I could have implemented more fun stuff like memory managment, evals, structured output, human in the loop
 
-## Checklist
+## Project Structure
+
+The `backend_node` directory contains the following important folders:
+
+- `ai`: This folder contains all the agent code.
+- `wallet`: This folder contains the interface with the wallet-lib.
+
+Additionally, the database transaction is attached as a decorator to any RPC handler inside the `backend_node/createServer` file.
+
+The `client_node` is a simple Hyperswarm RPC client that sends a few hardcoded messages to the AI to demonstrate that all the functions are implemented.
+
+The `web3` directory contains the local Ethereum blockchain setup. This is essential for testing and development purposes.
+
+The `indexer` directory connects to the local Ethereum blockchain and indexes the blockchain data. The `wallet-lib` connects to this indexer to fetch and interact with the blockchain data.
+
+### Checklist
 
 Start 13:00
 
@@ -24,11 +38,22 @@ Start 13:00
 ## Running the Example Queries
 
 To build and start the necessary Docker containers, use the following commands:
+Before running the Docker containers, make sure to copy the `.env.sample` file to `.env` and add the `OPENAI_KEY` specified below:
 
 ```sh
 docker compose build
 docker compose up web3 indexer
 docker compose up backend_node client_node
+```
+
+```sh
+cp .env.sample .env
+```
+
+Then, add the following line to your `.env` file:
+
+```
+REMOVED
 ```
 
 ### Note
