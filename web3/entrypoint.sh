@@ -3,6 +3,10 @@
 # Start the Hardhat node in the background
 npx hardhat node &
 
+
+# Wait a few seconds for the node to initialize
+sleep 5
+
 # Deploy a contract
 npx hardhat run scripts/deploy.js --network localhost
 
