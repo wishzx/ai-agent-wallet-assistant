@@ -1,0 +1,41 @@
+services:
+  web3:
+    build: ./web3
+    network_mode: host
+
+  indexer:
+    build: ./indexer
+    depends_on:
+      - web3
+    network_mode: host #this is required because hardcoded "localhost" in this source code
+
+  backend_node:
+    build: ./backend_node
+    network_mode: host
+    depends_on:
+      - web3
+      - indexer
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TOPIC=${TOPIC}
+    volumes:
+      - ./backend_node/db:/app/db
+      - ./backend_node/transactions:/app/transactions
+
+  client_node:
+    build: ./client_node
+    network_mode: host
+
+    environment:
+      - TOPIC=${TOPIC}
+    depends_on:
+      - backend_node
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  wallet_data:
+    driver: local

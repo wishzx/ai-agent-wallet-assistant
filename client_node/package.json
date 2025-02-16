@@ -1,0 +1,32 @@
+{
+  "name": "client_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hyperswarm/rpc": "^3.3.2",
+    "@types/b4a": "^1.6.4",
+    "b4a": "^1.6.7",
+    "dotenv": "^16.4.7",
+    "hyperdht": "^6.20.1",
+    "hyperswarm": "^4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.1",
+    "typescript": "^5.7.3"
+  }
+}
