@@ -1,4 +1,19 @@
-I had problems connecting to the suggested bitcoin testnet and indexer so I created a local eth blockchain and indexer using docker and following the instructions on https://docs.wallet.tether.io/blockchains/wallet-pay-eth-erc20
+# ETH AI Agent
+
+I'm building a simple AI agent that can perform ETH payments using the Wallet Development Kit (WDK), Hyperswarm RPC, and Hypercore/Hyperbee for storage.
+
+## Features
+
+### 💬 Natural Language Communication
+
+The agent supports several wallet-related commands in human language, including:
+
+- Creating a new ETH wallet
+- Showing the wallet balance
+- Making a ETH payment from the user’s wallet (assuming the agent has access to the private key)
+- Listing recent transactions
+
+I'm using [WDK](https://docs.wallet.tether.io/) and the [Ethereum wallet guide](https://docs.wallet.tether.io/blockchains/wallet-pay-eth-erc20) to handle the wallet operations.
 
 ## Project Structure
 
@@ -15,38 +30,22 @@ The `web3` directory contains the local Ethereum blockchain setup. This is essen
 
 The `indexer` directory connects to the local Ethereum blockchain and indexes the blockchain data. The `wallet-lib` connects to this indexer to fetch and interact with the blockchain data.
 
-### Checklist
+## References
 
-Start 13:00
-
-- [x] Setup repo, RPC server works (14:00)
-- [x] Client that calls the agent via Hyperswarm RPC (14:30)
-- [x] Hyperbee transaction log (14:40)
-- [x] AI agent loop working 3hours (15:55)
-- [x] All wallet functions implementation
-
-Note: Most of the code is done (17:50). The agent loop and tools work, but the implementation of the actual wallet functions is not great and took me 1:30 hours because I was not really familiar with the lib-wallet module and the documentation was incomplete. Specifically, I couldn't find a way to initialize a wallet from a private key, which blocked me and made me simplify the functionalities.
-
-- [x] testing that all functions are being called once from natural language (18:30)
-- [x] cleaning code (18:55)
-- [x] writing documentations (19:10-19:40)
-- [x] wrapping up and delivery (19:40)
-
-- [ ] make a CLI to use the client
+- https://docs.wallet.tether.io/blockchains/wallet-pay-btc
+- https://www.npmjs.com/package/@hyperswarm/rpc
+- https://docs.pears.com/building-blocks/hyperbee
+- https://docs.pears.com/building-blocks/hypercore
+- https://docs.pears.com/building-blocks/hyperdht
+- https://www.npmjs.com/package/hp-rpc-cli
 
 ## Running the Example Queries
 
 To build and start the necessary Docker containers, use the following commands:
-Before running the Docker containers, make sure to copy the `.env.sample` file to `.env` and add the `OPENAI_KEY` specified below:
+Before running the Docker containers, make sure to copy the `.env.sample` file to `.env` and add your `OPENAI_KEY`
 
 ```sh
 cp .env.sample .env
-```
-
-Then, add the following line to your `.env` file (explained in the Note section)
-
-```
-REMOVED
 ```
 
 ```sh
@@ -60,11 +59,7 @@ docker compose up backend_node client_node
 I couldn't run Ollama locally inside Docker on a Mac because Docker Desktop doesn't support GPU on Mac. For more information, see [Ollama Blog](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
 Instead, I'm using OpenAI. Here's my OpenAI key you can freely use for this (this repo is private):
 
-```
-REMOVED
-```
-
-### Test Run
+### Example Run
 
 # Ethereum Wallet Interaction Log
 
@@ -185,19 +180,4 @@ backend_node-1  |     "createdAt": "2025-02-16T18:54:35.484Z"
 backend_node-1  |   }
 backend_node-1  | ]
 
-
-```
-
-Woops! An error occurred during the execution of the `sendPayment` function:
-Since i initialized the wallet globally there is no way to catch that error inside the handler and I have no time left to fix this, for other time of errors the application send the error to the AI agent which will process it and send a nice message back
-
-```
-executing: sendPayment
-/app/node_modules/lib-wallet-pay-eth/src/wallet-pay-eth.js:322
-      if (!sender) throw new Error('insufficient balance or invalid sender')
-                                 ^
-
-Error: insufficient balance or invalid sender
-      at WalletPayEthereum._getSignedTx (/app/node_modules/lib-wallet-pay-eth/src/wallet-pay-eth.js:322:24)
-      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
 ```
