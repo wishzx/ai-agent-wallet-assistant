@@ -2,6 +2,8 @@
 
 I'm building a simple AI agent that can perform ETH payments using the Wallet Development Kit (WDK), Hyperswarm RPC, and Hypercore/Hyperbee for storage.
 
+I’m really excited about using peer-to-peer (P2P) technology like Hypercore, Hyperbee, and Hyperswarm RPC for this project. It allows decentralized, trustless data sharing and communication without relying on central servers. This means more privacy, better resilience, and true ownership of data. Building an AI agent on top of this stack shows how modern blockchain and P2P protocols can combine to create powerful, user-centric applications that are both scalable and secure.
+
 ## Features
 
 ### 💬 Natural Language Communication
@@ -57,7 +59,6 @@ docker compose up backend_node client_node
 ### Note
 
 I couldn't run Ollama locally inside Docker on a Mac because Docker Desktop doesn't support GPU on Mac. For more information, see [Ollama Blog](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
-Instead, I'm using OpenAI. Here's my OpenAI key you can freely use for this (this repo is private):
 
 ### Example Run
 
